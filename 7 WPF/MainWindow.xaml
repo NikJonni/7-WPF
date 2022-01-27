@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_7_WPF"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="850">
     <Window.CommandBindings>
         <CommandBinding Command="local:MyCommands.Exit" Executed="ExitExecuted"/>
         <CommandBinding Command="Open" Executed="OpenExecuted"/>
@@ -17,28 +19,24 @@
             <RowDefinition Height="80"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Menu Margin="5" Padding="5">
-            <MenuItem Header="_File">
+        <Menu Margin="5" Padding="5" Background="White">
+            <MenuItem Header="File">
                 <MenuItem Header="Open"  Command="Open"/>
                 <MenuItem Header="Save" Command="Save"/>
                 <Separator/>
                 <MenuItem Command="local:MyCommands.Exit"/>
             </MenuItem>
-        </Menu>
-        <ToolBarTray Grid.Row="1">
-            <ToolBar Margin="5" Padding="5" Visibility="Visible" >
-                <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="200" SelectionChanged="ComboBox_SelectionChanged">
-                    <TextBlock Text="Arial"/>
-                    <TextBlock Text="Times New Roman"/>
-                    <TextBlock Text="Calibri"/>
+        </Menu >
+        <ToolBarTray Grid.Row="1" Background="White">
+            <ToolBar Margin="5" Padding="5" Visibility="Visible" Background="White">
+                <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="200" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{StaticResource FontName}"
+                          Style="{DynamicResource ComboBoxStyle}">
                 </ComboBox>
-                <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="80" SelectionChanged="ComboBox_SelectionChanged_1">
-                    <TextBlock Text="12"/>
-                    <TextBlock Text="16"/>
-                    <TextBlock Text="18"/>
+                <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="80" SelectionChanged="ComboBox_SelectionChanged_1" ItemsSource="{StaticResource FontSize}"
+                          Style="{DynamicResource ComboBoxStyle}">
                 </ComboBox>
             </ToolBar>
-            <ToolBar Margin="5" Padding="5" >
+            <ToolBar Margin="5" Padding="5" Background="White">
                 <Button Click="ButtonWeight_Click">
                     <Image Source="Data/Жирный.png" Height="20"/>
                 </Button>
@@ -51,13 +49,17 @@
                     <Image Source="Data/Подчеркнутый.png" Height="22"/>
                 </Button>
             </ToolBar>
-            <ToolBar Margin="5" Padding="5">
+            <ToolBar Margin="5" Padding="5" Width="Auto" Background="White">
                 <StackPanel VerticalAlignment="Center">
                     <RadioButton Content="Черный" IsChecked="True" Checked="RadioButton_Checked"/>
-                    <RadioButton Content="Красный" Checked="RadioButton_Checked_1"/>
+                    <RadioButton Content="Красный" Checked="RadioButton_Checked_1" Foreground="Red"/>
                 </StackPanel>
+                <ComboBox x:Name="styleBox" Margin="20" Width="Auto" SelectedIndex="0" SelectionChanged="styleBox_SelectionChanged">
+                    <TextBlock Text="Светлая тема"/>
+                    <TextBlock Text="Тёмная тема"/>
+                </ComboBox>
             </ToolBar>
         </ToolBarTray>
-        <TextBox x:Name="textBox" Grid.Row="2" Margin="5" Padding="5" FontSize="12" FontFamily="Arial" TextWrapping="Wrap" SpellCheck.IsEnabled="True" Foreground="Black" VerticalScrollBarVisibility="Auto"/>
+        <TextBox x:Name="textBox" Grid.Row="2" Margin="5" Padding= "5" FontSize="12" FontFamily="Times New Roman" TextWrapping="Wrap" SpellCheck.IsEnabled="True" Foreground="Black" VerticalScrollBarVisibility="Auto"/>
     </Grid>
 </Window>

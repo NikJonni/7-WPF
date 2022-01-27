@@ -29,7 +29,7 @@ namespace _7_WPF
         /*Задание 3*/
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string fontName = ((sender as ComboBox).SelectedItem as TextBlock).Text;
+            string fontName = ((sender as ComboBox).SelectedItem as string);
             if (textBox != null)
             {
                 textBox.FontFamily = new FontFamily(fontName);
@@ -37,7 +37,7 @@ namespace _7_WPF
         }
         private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            string fonSize = ((sender as ComboBox).SelectedItem as TextBlock).Text;
+            string fonSize = ((sender as ComboBox).SelectedItem as string);
             if (textBox != null)
             {
                 double fontSize1 = Convert.ToDouble(fonSize);
@@ -114,6 +114,7 @@ namespace _7_WPF
         //{
         //    Application.Current.Shutdown();
         //}
+
         /*Задание 7*/
 
         private void OpenExecuted(object sender, ExecutedRoutedEventArgs e)
@@ -139,6 +140,30 @@ namespace _7_WPF
         private void ExitExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        /*Задание 0*/
+
+        //private void styleBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    int styleIndex = styleBox.SelectedIndex;
+        //    Uri uri = new Uri("Light.xaml", UriKind.Relative);
+        //    if (styleIndex == 1)
+        //    {
+        //        uri = new Uri("Dark.xaml", UriKind.Relative);
+        //    }
+        //    ResourceDictionary resource = Application.LoadComponent(uri) as ResourceDictionary;
+        //    Application.Current.Resources.Clear();
+        //    Application.Current.Resources.MergedDictionaries.Add(resource);
+        //}
+
+        private void styleBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Application.Current.Resources.MergedDictionaries.Clear();
+            Uri theme = new Uri(styleBox.SelectedIndex == 0 ? "Light.xaml" : "Dark.xaml",UriKind.Relative);
+            ResourceDictionary themeDict = Application.LoadComponent(theme) as ResourceDictionary;
+            Application.Current.Resources.MergedDictionaries.Add(themeDict);
+
         }
     }
 }

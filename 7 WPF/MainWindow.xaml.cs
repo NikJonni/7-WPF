@@ -29,7 +29,7 @@ namespace _7_WPF
         /*Задание 3*/
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string fontName = ((sender as ComboBox).SelectedItem as TextBlock).Text;
+            string fontName = ((sender as ComboBox).SelectedItem as string);
             if (textBox != null)
             {
                 textBox.FontFamily = new FontFamily(fontName);
@@ -37,7 +37,7 @@ namespace _7_WPF
         }
         private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            string fonSize = ((sender as ComboBox).SelectedItem as TextBlock).Text;
+            string fonSize = ((sender as ComboBox).SelectedItem as string);
             if (textBox != null)
             {
                 double fontSize1 = Convert.ToDouble(fonSize);

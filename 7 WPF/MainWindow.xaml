@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_7_WPF"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.CommandBindings>
@@ -18,7 +20,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Menu Margin="5" Padding="5">
-            <MenuItem Header="_File">
+            <MenuItem Header="File">
                 <MenuItem Header="Open"  Command="Open"/>
                 <MenuItem Header="Save" Command="Save"/>
                 <Separator/>
@@ -27,15 +29,15 @@
         </Menu>
         <ToolBarTray Grid.Row="1">
             <ToolBar Margin="5" Padding="5" Visibility="Visible" >
-                <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="200" SelectionChanged="ComboBox_SelectionChanged">
-                    <TextBlock Text="Arial"/>
+                <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="200" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{StaticResource FontName}">
+                    <!--<TextBlock Text="Arial"/>
                     <TextBlock Text="Times New Roman"/>
-                    <TextBlock Text="Calibri"/>
+                    <TextBlock Text="Calibri"/>-->
                 </ComboBox>
-                <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="80" SelectionChanged="ComboBox_SelectionChanged_1">
-                    <TextBlock Text="12"/>
+                <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="80" SelectionChanged="ComboBox_SelectionChanged_1" ItemsSource="{StaticResource FontSize}">
+                    <!--<TextBlock Text="12"/>
                     <TextBlock Text="16"/>
-                    <TextBlock Text="18"/>
+                    <TextBlock Text="18"/>-->
                 </ComboBox>
             </ToolBar>
             <ToolBar Margin="5" Padding="5" >
